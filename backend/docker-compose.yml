@@ -1,0 +1,20 @@
+version: '3'
+services:
+  backend:
+    build: .
+    ports:
+      - "5555:5555"
+    environment:
+      - PORT=5555
+      - MONGODBURL=YOUR MONGO DB URL
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
